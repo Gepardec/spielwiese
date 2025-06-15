@@ -9,18 +9,25 @@ spec:
   generators:
     - list:
         elements:
-          - folder: argocd/argocd-install
+          - name: argocd
+            folder: argocd/argocd-install
             namespace: argocd
-          - folder: argocd/argocd-appprojects
+          - name: appprojects
+            folder: argocd/argocd-appprojects
             namespace: argocd
-          - folder: argocd/argocd-repositories
+          - name: repositories
+            folder: argocd/argocd-repositories
             namespace: argocd
-          - folder: headlamp
+          - name: headlamp
+            folder: headlamp
             namespace: kube-system
+          - name: sealed-secrets
+            folder: sealed-secrets
+            namespace: sealed-secrets
           
   template:
     metadata:
-      name: "{{ folder }}"
+      name: "{{ name }}"
     spec:
       project: "infrastructure"
       syncPolicy:

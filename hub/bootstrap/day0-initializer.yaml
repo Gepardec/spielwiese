@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/Gepardec/spielwiese.git'
+    repoURL: 'https://github.com/gattma/spielwiese.git'
     targetRevision: HEAD
     path: hub/day0
   destination:
