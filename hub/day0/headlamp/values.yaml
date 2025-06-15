@@ -1,0 +1,3 @@
+# override headlamp default values with:
+# headlamp:
+#   fullnameOverride: XXX

@@ -1,0 +1,3 @@
+# override sealed-secrets default values with:
+# sealed-secrets:
+#   fullnameOverride: XXX

@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: hub-argocd
+  namespace: argocd
+spec:
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+  generators:
+    - list:
+        elements:
+          - folder: argocd/argocd-install
+            namespace: argocd
+          - folder: argocd/argocd-appprojects
+            namespace: argocd
+          - folder: argocd/argocd-repositories
+            namespace: argocd
+          - folder: headlamp
+            namespace: kube-system
+          
+  template:
+    metadata:
+      name: "{{ folder }}"
+    spec:
+      project: "infrastructure"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+      source:
+        repoURL: "https://github.com/Gepardec/spielwiese.git"
+        targetRevision: "main"
+        path: hub/day0/{{ folder }}
+      destination:
+        server: "https://kubernetes.default.svc"
+        namespace: "{{ namespace }}"
