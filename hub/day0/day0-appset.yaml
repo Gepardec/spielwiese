@@ -37,7 +37,7 @@ spec:
         syncOptions:
           - CreateNamespace=true
       source:
-        repoURL: "https://github.com/gattma/spielwiese.git"
+        repoURL: "https://github.com/Gepardec/spielwiese.git"
         targetRevision: "main"
         path: hub/day0/{{ folder }}
       destination:
