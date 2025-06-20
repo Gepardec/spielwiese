@@ -1,1 +1,4 @@
 .idea
+
+# Ignore helm dependencies
+**/charts/*.tgz
