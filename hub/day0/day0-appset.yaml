@@ -1,0 +1,45 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: hub-argocd
+  namespace: argocd
+spec:
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+  generators:
+    - list:
+        elements:
+          - name: argocd
+            folder: argocd/argocd-install
+            namespace: argocd
+          - name: appprojects
+            folder: argocd/argocd-appprojects
+            namespace: argocd
+          - name: repositories
+            folder: argocd/argocd-repositories
+            namespace: argocd
+          - name: headlamp
+            folder: headlamp
+            namespace: kube-system
+          - name: sealed-secrets
+            folder: sealed-secrets
+            namespace: sealed-secrets
+          
+  template:
+    metadata:
+      name: "{{ name }}"
+    spec:
+      project: "infrastructure"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+      source:
+        repoURL: "https://github.com/Gepardec/spielwiese.git"
+        targetRevision: "main"
+        path: hub/day0/{{ folder }}
+      destination:
+        server: "https://kubernetes.default.svc"
+        namespace: "{{ namespace }}"
