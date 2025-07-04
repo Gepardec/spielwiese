@@ -1,0 +1,12 @@
+ingress-nginx:
+  controller:
+    hostNetwork: true
+    kind: DaemonSet
+    service:
+      type: ClusterIP
+    dnsPolicy: ClusterFirstWithHostNet
+    reportNodeInternalIp: true
+    image:
+      tag: "v1.12.3"
+  defaultBackend:
+    enabled: true
