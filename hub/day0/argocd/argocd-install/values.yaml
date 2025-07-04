@@ -1,14 +1,15 @@
-server:
-  ingress:
-    enabled: true
-    ingressClassName: nginx
-    annotations:
-      kubernetes.io/ingress.class: "nginx"
-      nginx.ingress.kubernetes.io/ssl-redirect: "true"
-      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    hosts:
-      - argocd.10.254.102.21.nip.io
-    tls:
-      - hosts:
-          - argocd.10.254.102.21.nip.io
-        secretName: argocd-server-tls
+argo-cd:
+  server:
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      annotations:
+        kubernetes.io/ingress.class: "nginx"
+        nginx.ingress.kubernetes.io/ssl-redirect: "true"
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+      hosts:
+        - argocd.10.254.102.21.nip.io
+      tls:
+        - hosts:
+            - argocd.10.254.102.21.nip.io
+          secretName: argocd-server-tls
