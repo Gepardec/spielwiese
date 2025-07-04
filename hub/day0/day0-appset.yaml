@@ -27,7 +27,10 @@ spec:
           - name: crossplane
             folder: crossplane
             namespace: crossplane
-          
+          - name: ingress-nginx
+            folder: ingress-nginx
+            namespace: ingress-nginx
+
   template:
     metadata:
       name: "{{ name }}"
