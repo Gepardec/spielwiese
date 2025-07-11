@@ -14,4 +14,4 @@ headlamp:
     tls:
       - hosts:
           - headlamp.10.254.102.21.nip.io
-        secretName: argocd-server-tls
+        secretName: headlamp-tls
