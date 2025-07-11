@@ -1,3 +1,9 @@
-# override headlamp default values with:
-# headlamp:
-#   fullnameOverride: XXX
+headlamp:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hosts:
+      - host: headlamp.10.254.102.21.nip.io
+        paths:
+          - path: /
+            type: ImplementationSpecific
