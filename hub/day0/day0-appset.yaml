@@ -24,9 +24,9 @@ spec:
           - name: sealed-secrets
             folder: sealed-secrets
             namespace: sealed-secrets
-          - name: crossplane
-            folder: crossplane
-            namespace: crossplane-system
+          # - name: crossplane
+          #   folder: crossplane
+          #   namespace: crossplane-system
           - name: ingress-nginx
             folder: ingress-nginx
             namespace: ingress-nginx
